@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Document </title>
+</head>
+
+<body>
+
+    <div id="showImg">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGtdtibstB6p2O5DLSwm_nxYJfr1SEIVP8A&s"
+            height="200" width="300">
+    </div>
+
+    <button id="toggleBtn">Hide!</button>
+
+    <script>
+
+        const imgContainer = document.getElementById('showImg');
+        const toggleButton = document.getElementById('toggleBtn');
+
+        const savedState = sessionStorage.getItem("imgVisible");
+
+        if (savedState === "hidden") {
+            imgContainer.style.display = "none";
+        } else {
+            imgContainer.style.display = "block";   // default
+        }
+
+        function hideShow() {
+            if (imgContainer.style.display === "none") {
+                imgContainer.style.display = "block";
+                sessionStorage.setItem("imgVisible", "shown");
+            } else {
+                imgContainer.style.display = "none";
+                sessionStorage.setItem("imgVisible", "hidden");
+            }
+        }
+
+        toggleButton.addEventListener('click', hideShow);
+
+    </script>
+
+</body>
+
+</html>
